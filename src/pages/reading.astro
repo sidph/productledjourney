@@ -1,0 +1,120 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ReadingPage from '../content/pages/reading.md';
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Reading Recommendations"
+      description="Books, articles, podcasts, and resources."
+    />
+
+    <style>
+      main {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 3rem 5vw;
+      }
+
+      .reading-content {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      :global(.reading-content h1),
+      :global(.reading-content h2),
+      :global(.reading-content h3) {
+        margin-top: 3rem;
+      }
+
+      :global(.reading-content p) {
+        font-size: 1.25rem;
+        line-height: 1.9;
+      }
+
+      :global(.reading-content a) {
+        color: #c7831d;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      :global(.reading-content a:hover) {
+        text-decoration: underline;
+      }
+
+      :global(.reading-content blockquote) {
+        position: relative;
+        margin: 2rem 0 4rem;
+        padding: 1rem 4rem;
+        border-left: none !important;
+        font-style: italic;
+        font-size: 1.25rem;
+        line-height: 2;
+      }
+
+      :global(.reading-content blockquote::before) {
+        content: "“";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 4rem;
+        line-height: 1;
+        font-weight: 700;
+        color: #333;
+      }
+
+      :global(.reading-content blockquote::after) {
+        content: "”";
+        position: absolute;
+        right: 0;
+        bottom: -0.5rem;
+        font-size: 4rem;
+        line-height: 1;
+        font-weight: 700;
+        color: #333;
+      }
+
+      :global(.reading-content blockquote p) {
+        margin: 0;
+        font-style: italic;
+      }
+
+      :global(.reading-content hr) {
+        margin: 4rem 0;
+        border: 0;
+        border-top: 1px solid #999;
+      }
+
+      :global(.reading-content ul) {
+        font-size: 1.2rem;
+        line-height: 1.8;
+      }
+
+      @media (max-width: 800px) {
+        main {
+          padding: 2rem;
+        }
+
+        :global(.reading-content blockquote) {
+          padding: 1rem 2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <div class="reading-content">
+        <ReadingPage />
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>

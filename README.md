@@ -1,63 +1,401 @@
-# Astro Starter Kit: Blog
+# Product Led Journey
 
-```sh
-npm create astro@latest -- --template blog
+Personal website and blog built with Astro.
+
+## Running Locally
+
+```bash
+cd ~/productledjourney
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+Site runs at:
 
 ```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+http://localhost:4321
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+---
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+# Content Structure
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## Blog Posts
 
-Any static assets, like images, can be placed in the `public/` directory.
+Location:
 
-## 🧞 Commands
+```text
+src/content/blog/
+```
 
-All commands are run from the root of the project, from a terminal:
+Each blog post should have frontmatter:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```yaml
+---
+title: "Post Title"
+description: "Short description"
+date: 2025-08-21
+heroImage: "./images/cover.png"
+---
+```
 
-## 👀 Want to learn more?
+Important:
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+* Use `date`, not `pubDate`
+* Images referenced in markdown should exist locally
+* Blog listing page reads from `date`
 
-## Credit
+---
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+## Static Pages
+
+Location:
+
+```text
+src/content/pages/
+```
+
+Current pages:
+
+```text
+about.md
+launches.md
+reading.md
+```
+
+Routes:
+
+```text
+/about
+/launches
+/reading
+```
+
+---
+
+# Navigation Menu
+
+File:
+
+```text
+src/components/Header.astro
+```
+
+Example:
+
+```astro
+<nav>
+  <a href="/">Home</a>
+  <a href="/blog">Blog</a>
+  <a href="/about">About</a>
+  <a href="/reading">Reading</a>
+  <a href="/launches">Highlight Reel</a>
+</nav>
+```
+
+Modify links here.
+
+---
+
+# Social Icons
+
+File:
+
+```text
+src/components/Header.astro
+```
+
+SVG icons live inline in this file.
+
+Example:
+
+```astro
+<a
+  href="https://linkedin.com/in/yourprofile"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <svg>...</svg>
+</a>
+```
+
+---
+
+# About Page
+
+File:
+
+```text
+src/pages/about.astro
+```
+
+Main content:
+
+```astro
+<AboutPage />
+```
+
+Container width:
+
+```astro
+<main style="max-width:1200px; margin:0 auto; padding:2rem;">
+```
+
+Increase or decrease width here.
+
+---
+
+# Highlight Reel Page
+
+Files:
+
+```text
+src/pages/launches.astro
+src/content/pages/launches.md
+```
+
+The layout is controlled primarily inside:
+
+```text
+launches.md
+```
+
+This allows custom image/text layouts without touching Astro components.
+
+---
+
+# Image + Text Layouts
+
+## 50 / 50 Split
+
+```html
+<div style="display:flex; gap:2rem; align-items:center;">
+  <img
+    src="/pages/images/example.png"
+    style="width:50%;"
+  />
+  <div style="width:50%;">
+    Text here...
+  </div>
+</div>
+```
+
+---
+
+## Larger Image
+
+```html
+<div style="display:flex; gap:2rem;">
+  <img
+    src="/pages/images/example.png"
+    style="width:65%;"
+  />
+  <div style="width:35%;">
+    Text here...
+  </div>
+</div>
+```
+
+---
+
+## Smaller Image
+
+```html
+<div style="display:flex; gap:2rem;">
+  <img
+    src="/pages/images/example.png"
+    style="width:35%;"
+  />
+  <div style="width:65%;">
+    Text here...
+  </div>
+</div>
+```
+
+---
+
+## Image Width Only
+
+```html
+<img
+  src="/pages/images/example.png"
+  style="width:600px;"
+/>
+```
+
+---
+
+## Image Height Only
+
+```html
+<img
+  src="/pages/images/example.png"
+  style="height:400px;"
+/>
+```
+
+---
+
+## Stretch Image
+
+```html
+<img
+  src="/pages/images/example.png"
+  style="width:800px; height:300px;"
+/>
+```
+
+Note: This may distort the image.
+
+---
+
+# Common Astro Commands
+
+Find text:
+
+```bash
+grep -R "searchText" src
+```
+
+Find all references to pubDate:
+
+```bash
+grep -R "pubDate" src
+```
+
+---
+
+# Nano Shortcuts
+
+Find:
+
+```text
+Ctrl + W
+```
+
+Find next:
+
+```text
+Option + W
+```
+
+Replace:
+
+```text
+Ctrl + \
+```
+
+Save:
+
+```text
+Ctrl + O
+```
+
+Exit:
+
+```text
+Ctrl + X
+```
+
+Undo:
+
+```text
+Alt + U
+```
+
+Redo:
+
+```text
+Alt + E
+```
+
+On Mac Terminal:
+
+```text
+Alt = Option
+```
+
+---
+
+# Common Migration Gotchas
+
+## Blog page loads but individual posts fail
+
+Usually caused by:
+
+```text
+pubDate
+```
+
+still being referenced somewhere.
+
+Search:
+
+```bash
+grep -R "pubDate" src
+```
+
+Replace with:
+
+```text
+date
+```
+
+---
+
+## Images not showing
+
+Verify image exists:
+
+```bash
+ls public/pages/images
+```
+
+Images referenced like:
+
+```html
+<img src="/pages/images/example.png" />
+```
+
+must physically exist in:
+
+```text
+public/pages/images/
+```
+
+---
+
+## Markdown shows raw HTML
+
+Wrap image/text sections inside:
+
+```html
+<div>
+  ...
+</div>
+```
+
+instead of leaving HTML and markdown mixed together.
+
+---
+
+# Deployment
+
+Local build:
+
+```bash
+npm run build
+```
+
+Preview production build:
+
+```bash
+npm run preview
+```
+
+Future deployment target:
+
+```text
+Cloudflare Pages
+```
+

@@ -1,0 +1,51 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LaunchesPage from '../content/pages/launches.md';
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Launches"
+      description="Products, launches, and highlights from my career."
+    />
+
+    <style>
+      main {
+        width: 80%;
+	max-width: none;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      :global(p) {
+        font-size: 1.1rem;
+        line-height: 1.75;
+      }
+
+      :global(hr) {
+        margin: 3rem 0;
+        border: 0;
+        border-top: 1px solid #999;
+      }
+
+      @media (max-width: 800px) {
+        :global(.media-row) {
+          grid-template-columns: 1fr !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <LaunchesPage />
+    </main>
+
+    <Footer />
+  </body>
+</html>
