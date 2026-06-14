@@ -5,17 +5,19 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2><a href="/">  </a></h2>
 		<div class="internal-links">
 			<HeaderLink href="/blog">BLOG</HeaderLink>
 			<HeaderLink href="/about">ABOUT ME</HeaderLink>
                         <HeaderLink href="/launches">HIGHLIGHT REEL</HeaderLink>
                         <HeaderLink href="/reading">GOODREADS</HeaderLink>
 		</div>
+
 		<div class="social-links">
 			<a
   			href="https://www.linkedin.com/in/sid-phadkar/"
   			target="_blank"
+			title="Connect with me on LinkedIn"
   			rel="noopener noreferrer"
   			aria-label="LinkedIn"
 			>
@@ -26,8 +28,8 @@ import HeaderLink from './HeaderLink.astro';
     				/>
   			</svg>
 			</a>			
-			<a href="https://twitter.com/astrodotbuild" target="_blank">
-				<span class="sr-only">Follow Astro on Twitter</span>
+			<a href="https://x.com/sidd_p" target="_blank" title="Follow me on Twitter">
+				<span class="sr-only">Follow me on Twitter</span>
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
 					><path
 						fill="currentColor"
@@ -35,8 +37,8 @@ import HeaderLink from './HeaderLink.astro';
 					></path></svg
 				>
 			</a>
-			<a href="https://github.com/withastro/astro" target="_blank">
-				<span class="sr-only">Go to Astro's GitHub repo</span>
+			<a href="https://github.com/sidph/productledjourney/blob/main/contributions.md" target="_blank" title="Have an idea? Contribute to this site">
+				<span class="sr-only">Contribute</span>
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
 					><path
 						fill="currentColor"
