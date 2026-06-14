@@ -3,3 +3,4 @@ npm run build        # verify build
 git add .
 git commit -m "..."
 git push             # auto deploys to Cloudflare
+Merge PR             # repo configured to require PRs
